@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "@googleapis/androidpublisher": "npm:@googleapis/androidpublisher@^8.0.0",
+    "google-auth-library": "npm:google-auth-library@^9.0.0",
+    "@std/cli": "jsr:@std/cli@^1.0.22"
+  },
+  "tasks": {
+    "run": "deno run --allow-read --allow-net --allow-env main.ts",
+    "compile": "deno compile --allow-read --allow-net --allow-env main.ts -o upload-android-app-to-google-play"
+  }
+}
