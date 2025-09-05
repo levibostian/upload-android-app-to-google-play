@@ -1,0 +1,20 @@
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Deno
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v2.x
+
+    - name: Install dependencies
+      run: deno install --frozen
+
+    - name: Verify the binary runs
+      run: deno task run
