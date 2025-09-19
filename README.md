@@ -27,3 +27,11 @@ curl -fsSL https://github.com/levibostian/upload-android-app-to-google-play/blob
 - `--service-account <PATH>`: Path to your Google service account JSON key file [REQUIRED]
 - `--track <TRACK>`: Release track - one of: `internal`, `alpha`, `beta`, `production`. Defaults to `internal`
 - `--help, -h`: Show help message
+
+# Why did I create this tool? 
+
+When it comes to CI tools, I want to set it and forget it. I expect to be able to push code today and my CI server is going to work as I expect. 
+
+When it comes to existing tools out there for uploading Android apps to Google Play from a CI server, I have been unsatisfied with the existing solutions. Existing tools... take too long to install, take too long to configure, can randomly fail at runtime, or are abandoned. 
+
+So, I decided to build something. A tool that I can set it and forget it. The tool is a very small CLI wrapper around the Google Cloud SDK. We only rely on Google to maintain their SDK and their API that the SDK points to. The tool is also a compiled binary so as long as your operating system (Linux, macOS, Windows) is able to execute the binary and Google still supports the API endpoint the binary calls, it should work without any issues. No langs to install, no package manager, no dependencies/tools to install. 
