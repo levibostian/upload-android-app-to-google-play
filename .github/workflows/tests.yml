@@ -16,5 +16,18 @@ jobs:
     - name: Install dependencies
       run: deno install --frozen
 
-    - name: Verify the binary runs
-      run: deno task run
+    - name: Create Google Service Account file for testing Google Play auth 
+      uses: levibostian/action-random-file@main
+      id: create-google-play-service-account-file
+      with:
+        base64-file-content: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_FILE_B64 }}
+        file-name: "service_account.json"      
+
+    - name: Compile the binary 
+      run: deno task compile-for-this-os
+
+    - name: Run auth command to test the tool works as expected
+      run: |
+        ./upload-android-app-to-google-play auth-check \
+          --package-name earth.levi.bluetoothbattery \
+          --service-account ${{ steps.create-google-play-service-account-file.outputs.path }}

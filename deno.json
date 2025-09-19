@@ -6,6 +6,7 @@
   },
   "tasks": {
     "run": "deno run --allow-read --allow-net --allow-env main.ts",
-    "compile": "deno compile --output $OUTPUT_FILE_NAME --target $DENO_TARGET --allow-read --allow-net --allow-env main.ts"
+    "compile": "deno compile --output $OUTPUT_FILE_NAME --target $DENO_TARGET --allow-read --allow-net --allow-env main.ts",
+    "compile-for-this-os": "deno compile --output upload-android-app-to-google-play --allow-read --allow-net --allow-env main.ts"
   }
 }
