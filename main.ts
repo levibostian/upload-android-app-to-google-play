@@ -139,11 +139,13 @@ try {
     console.log("");
 
     console.log("📞 Calling Google Play Console API...");
+    // params dont really matter. we're just testing the response code is 200 meaning auth is good. 
     const response = await androidPublisherClient.generatedapks.list({
-      packageName,
+      packageName,      
+      versionCode: 1
     });
 
-    if (response.ok) {
+    if (response.status == 200) {
       console.log("✅ Authentication successful!");
       console.log(`   Successfully connected to Google Play Console API`);
 
