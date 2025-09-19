@@ -1,0 +1,21 @@
+name: Renovate
+
+on:  
+  push: # TODO: remove me. just here for testing. 
+  schedule:
+  # TODO: is this the schedule I want? 
+    - cron: '0/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Renovate
+        uses: renovatebot/github-action@8ac70de2fe55752c573155866e30735411e3b61c # v41.0.22        
+        with: 
+          token: ${{ secrets.RENOVATE_TOKEN }}
